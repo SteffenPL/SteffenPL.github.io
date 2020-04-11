@@ -17,3 +17,10 @@ social: true
 ---
 
 This page is about my research as a mathematician in <a href="https://saramerinoaceituno.wordpress.com/">Sara Merino-Aceituno's kinetic theory group</a>.
+
+My research interests are:
+- kinetic theory
+ - applications in biology
+ - coupling between microscopic and macroscopic systems
+- numerics
+ - geometry compatible schemes (sympectic methods, ...)

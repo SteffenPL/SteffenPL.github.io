@@ -8,8 +8,6 @@ description: > # this means to ignore newlines until "url:"
 footer_text: >
   Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
-  Photos from <a href="https://unsplash.com" target="_blank">Unsplash</a>.
-
 url:  # the base hostname & protocol for your site
 baseurl: # /al-folio # the subpath of your site, e.g. /blog/
 last_updated: # leave blank if you don't want to display last updated
@@ -45,7 +43,7 @@ google_analytics: UA-XXXXXXXXX # out your google-analytics code
 # Blog
 # -----------------------------------------------------------------------------
 blog_name: SteffenPL
-blog_description: academic webpage
+blog_description: chapters of mathematics
 
 # Pagination
 paginate: 4
@@ -58,7 +56,7 @@ text:
     older: 'Older'
 
 # Comments
-disqus_shortname: SteffenPL # put your disqus shortname
+disqus_shortname: # SteffenPL # put your disqus shortname
 
 # Optional features
 show_social_icons:  false
