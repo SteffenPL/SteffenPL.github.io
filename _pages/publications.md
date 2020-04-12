@@ -6,7 +6,7 @@ description: Publications by categories in reversed chronological order.
 years: [2020]
 ---
 
-<h3>Accepted</h3>
+<h3>accepted</h3>
 
 {% for y in page.years %}
   <h3 class="year">{{y}}</h3>

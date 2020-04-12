@@ -1,18 +1,19 @@
 a {
-    color: $text-color;
+    color: $link-color;
     text-decoration: none;
 
     &:hover {
-        color: $theme-color;
+        color: $link-hover-color;
         text-decoration: none;
     }
 }
 
 article a, .news a {
-    color: $theme-color;
+    color: $link-color;
     font-weight: 100;
 
     &:hover {
+        color: $link-hover-color;
         text-decoration: underline;
     }
 }
@@ -20,7 +21,7 @@ article a, .news a {
 .social a {
     color: $text-color;
 
-    &:hover { color: $theme-color; }
+    &:hover { color: $link-hover-color; }
 }
 
 
