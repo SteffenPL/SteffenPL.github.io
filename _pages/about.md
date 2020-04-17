@@ -20,10 +20,10 @@ social: true
 This page is about my research in <a href="https://saramerinoaceituno.wordpress.com/">Sara Merino-Aceituno's kinetic theory group</a>.
 
 My research interests are:
-- kinetic theory
-  - applications in biology
-    - Epithelial–mesenchymal transition in the chick neural tube
-    - vortex models
+- kinetic theory (and applications in biology)
+  - epithelial–mesenchymal transition in the chick neural tube
+  - vertex models
   - coupling between microscopic and macroscopic systems
-- numerics
-  - geometric numerics (sympectic methods, ...)
+- scientific computing
+  - geometric numerical methods (sympectic methods, FEEC...)
+  - elasticity
