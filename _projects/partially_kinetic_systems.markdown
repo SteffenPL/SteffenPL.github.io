@@ -74,6 +74,11 @@ $$
 g(r,Q_j) = \sin(\frac{q}{10})/(1+r^2) + \frac{q}{10}.
 $$
 
+Near the plato of the contour lines, the blue dots move very fast in $$r$$ direction and are almost constant in $$q$$ direction.
+At this point all kinetic energy of the particles is transferred to the macroscopic system.
+Later, the particles obtain kinetic energy again.
+
+This behaviour is best understood with the notation of the mean-field mass, which we will develop below!
 
 
 
