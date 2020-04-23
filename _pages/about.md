@@ -27,3 +27,8 @@ My research interests are:
 - scientific computing
   - geometric numerical methods (sympectic methods, FEEC...)
   - elasticity
+
+
+short CV: <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+&emsp;
+detailed CV: <a href="https://orcid.org/{{ site.orcid_id }}" target="_blank" title="ORCID"><i class="ai ai-orcid"></i></a>
