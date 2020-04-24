@@ -6,12 +6,15 @@ img: /assets/img/partially_kinetic_systems_example.svg
 tag: [current]
 ---
 
-<p style="color:red;">This post is based on ongoing work. The statements are only partially published.</p>
+<p style="color:red;">This post is based on ongoing work. The statements in the linear case are going to be published in {% cite plunder2020linearPartiallyKineticSystems %}. The nonlinear case is in progress.</p>
 
 
 We study a framework to couple kinetic systems with other macroscopic components.
+The challenge here is to impose a kinetic constraint onto the evolution of the particle measure of the
+kinetic system. Out approach is to impose the constraint at the microscopic level instead.
+Therefore, we have to adapte the mean-field limit onto a setting with hlonomic constraints.
 
-Under appropriate assumptions, **Dorbushin's stability estimate**[^D] generalises well to these systems which yields a fundamental stability estimate and allows proving the mean-field limit.
+Under appropriate assumptions, **Dorbushin's stability estimate** {% cite golseDynamicsLargeParticle2016 %} generalises well to such constrained systems which yields a fundamental stability estimate and allows proving the mean-field limit.
 
 On the other hand, there are singular examples for which the discrete dynamics are well-defined but the mean-field limit fails dramatically.
 
@@ -68,13 +71,13 @@ For the plots we used $N = 100$ particles.
 Your browser does not support the video tag.
 </video>
 
-The constraint is already visualised by its contour lines in the plot, however, it is the nonlinear function
+The constraint in this setting is given by the nonlinear function
 
 $$
 g(r,Q_j) = \sin(\frac{q}{10})/(1+r^2) + \frac{q}{10}.
 $$
 
-Near the plato of the contour lines, the blue dots move very fast in $$r$$ direction and are almost constant in $$q$$ direction.
+Near the plateau of the contour lines, the blue dots move very fast in $$r$$ direction and are almost constant in $$q$$ direction.
 At this point all kinetic energy of the particles is transferred to the macroscopic system.
 Later, the particles obtain kinetic energy again.
 
@@ -90,17 +93,18 @@ This behaviour is best understood with the notation of the mean-field mass, whic
 Your browser does not support the video tag.
 </video>
 
-In the same setting as above, but with
+In the same setting as above, but with the singular constraint function
 
 $$
-g(r,Q_j) = r^2 + Q_j^2
+g(r,Q_j) = (r-0.5)^2 + Q_j^2.
 $$
 
-we obtain a system for which the mean-field limit will fail!
+If $$r = 0$$ the constraint is not invertible with respect to $$Q_j$$, which implies
+that $$\frac{\partial g}{\partial Q_j} \to \infty$$.
+We obtain a system for which the mean-field limit will fail!
 
-This is because the time at which the particles change their direction is determined by the particle which hits the the $$r$$ axis at first, since here the constraint is singular with respect to $$Q_j$$.
-
-This behaviour is problematic from a kinetic perspective and demonstrates how important it is to include regularity conditions in the theory.
+The time at which the particles change their direction is determined by the particle which hits the the singularity of $$\frac{\partial g}{\partial Q_j}$$ first.
+Such a behaviour is problematic from a kinetic perspective, since a continious measure cannot detect this case well. This singular example demonstrates how important it is to include regularity conditions in the theory.
 
 
 ## Mean-field limit for partially kinetic systems
@@ -158,9 +162,35 @@ The PDE is a first-order transport equation.
 
 <p style="color:red;">This section is based on ongoing work. The statements are not published yet.</p>
 
-Following [François Golse's lecture notes 'On the Dynamics of Large Particle Systems in the Mean Field Limit'](https://arxiv.org/abs/1301.5494) [^G], we can show the mean-field limit.
-For the linear case the result is going to be published in [^P],
+Following François Golse's lecture notes 'On the Dynamics of Large Particle Systems in the Mean Field Limit'
+{% cite golseDynamicsLargeParticle2016 %}, we can show the mean-field limit.
+For the linear case the result is going to be published in {% cite plunder2020linearPartiallyKineticSystems %},
 for the nonlinear case the publication is in progress.
+
+The aim is to prove a modified version of Dobrushin's stability estimate.
+We consider two solutions with different initial conditions
+$$(r(t),f(t))$$ and $$(\tilde{r}(t), \tilde{f}(t))$$.
+Under some technical conditions, we aim at proving the estimate
+
+$$
+\Vert r(t) - \tilde{r}(t) \Vert
++
+\Vert \dot r(t) - \tilde{\dot r}(t) \Vert
++
+W^1(f(t), \tilde{f}(t))
+$$
+
+$$
+\quad \quad \quad \quad \quad \quad \leq C e^{Lt}
+(\Vert r(0) - \tilde{r}(0) \Vert
++
+\Vert \dot r(0) - \tilde{\dot r}(0) \Vert
++
+W^1(f(0), \tilde{f}(0)) )
+$$
+
+where $$W^1$$ denotes the Wasserstein distance with exponent 1 (see Monge-Kantorovich distance in {% cite golseDynamicsLargeParticle2016 %}).
+The Wasserstein distance  provides an excellent metric to compare particle measures $$f(t)$$ and $$\tilde{f}(t)$$.
 
 ### Linear case
 
@@ -169,13 +199,10 @@ we can use a classical stability estimate for ODEs to obtain Dobrushin's stabili
 
 #### Central estimates in the linear case
 
-The Wasserstein distance (see Monge-Kantorovich distance in [[^G]]) provides an excellent metric to compare two particle measure $$f_1, f_2$$.
-We denote the distance by $W_1(f_1,f_2)$.
-
-If the mean-field force is linear, we obtain an estimate of the form
+If the mean-field force is linear, we obtain from Kantorovich's duality formula for the Wassertein distance an estimate of the form
 
 $$
-\Vert F_\text{mf}(r,f_1) - F_\text{mf}(r,f_2) \Vert \leq L(r) W_1(f_1,f_2)
+\Vert F_\text{mf}(r,f) - F_\text{mf}(r,\tilde f) \Vert \leq L(r) W_1(f,\tilde{f})
 $$
 
 where $$L(r)$$ is an appropriate Lipschitz constant.
@@ -200,9 +227,10 @@ $$
 This leads to the problem of estimating terms like
 
 $$
-\Vert \left( m_r + m_\text{mf}(r,f_2) \right)^{-1} ( F_r(r) + F_{\text{mf}}(r,f_2) )
--
-\left( m_r + m_\text{mf}(r,f_2) \right)^{-1} ( F_r(r) + F_{\text{mf}}(r,f_2) )
+\Vert \left( m_r + m_\text{mf}(r,f) \right)^{-1} ( F_r(r) + F_{\text{mf}}(r,f) )
+$$
+$$\quad -
+\left( m_r + m_\text{mf}(\tilde{r},\tilde{f}) \right)^{-1} ( F_r(\tilde{r}) + F_{\text{mf}}(\tilde{r},\tilde{f}) )
 \Vert.
 $$
 
@@ -210,13 +238,10 @@ So far, I found no completely satisfying solutions.
 Right now, a bootstrapping-like approach allows me to assume an upper bound for the mean-field mass. This allows to derive the nessecary estimates.
 Then, I can arguee afterwards that the regions with problematic mass cannot be reached due to energy conservation.
 
+However, the proof needs proper checks!
 
 
+References
+----------
 
-
----
-[^1]: In application, this might be an elasticity equations which describes a large macroscopic object.
-[^2]:
-[^3]: Holonmic constraints
-[^D]: Dobrushin's stability estimate can be found for example in [[^G]]
-[^G]: [On the Dynamics of Large Particle Systems in the Mean Field Limit, François Golse](https://arxiv.org/abs/1301.5494)
+{% bibliography --cited %}
