@@ -12,7 +12,7 @@ tag: [current]
 We study a framework to couple kinetic systems with other macroscopic components.
 The challenge here is to impose a kinetic constraint onto the evolution of the particle measure of the
 kinetic system. Out approach is to impose the constraint at the microscopic level instead.
-Therefore, we have to adapte the mean-field limit onto a setting with hlonomic constraints.
+Therefore, we have to adapt the mean-field limit onto a setting with holonomic constraints.
 
 Under appropriate assumptions, **Dorbushin's stability estimate** {% cite golseDynamicsLargeParticle2016 %} generalises well to such constrained systems which yields a fundamental stability estimate and allows proving the mean-field limit.
 
