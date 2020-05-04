@@ -24,6 +24,7 @@ My research interests are:
   - epithelial–mesenchymal transition in the chick neural tube
   - vertex models
   - coupling between microscopic and macroscopic systems
+  - stochastic evolution equations
 - scientific computing
   - geometric numerical methods (sympectic methods, FEEC...)
   - elasticity
