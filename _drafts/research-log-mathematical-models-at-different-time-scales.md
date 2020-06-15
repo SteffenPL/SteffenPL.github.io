@@ -1,10 +1,10 @@
 ---
 layout: post
-title: 'Research log: Mathematical models at different time scales'
+title: Deformed time scales?
 
 ---
-A phenomenon that keeps surprising me is friction.  
-  
+A phenomenon that keeps surprising me is friction.
+
 For mechanical problems, a typical point of departure is
 
 $$  
