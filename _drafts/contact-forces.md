@@ -56,8 +56,8 @@ $$ \\lambda \\geq 0 \\quad \\text{and} \\quad \\lambda \\cdot c(x) = 0$$.
 The first condition is called the dual feasibility, since it makes sure that the multiplier push into the feasible region.  
 The second condition is a complementary slackness conditions, which ensures that the normal forces are only non-zero at the moment of contact. [^1]
 
-#### Tangential forces (brief)
+#### Tangential forces (brief)[
 
 ***
 
-[^1]: KKT conditions
+[^1]: The naming is inherited from the [neccesary KKT conditions](https://en.wikipedia.org/wiki/Karush%E2%80%93Kuhn%E2%80%93Tucker_conditions#Necessary_conditions).
