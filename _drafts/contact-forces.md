@@ -29,8 +29,6 @@ There are two components:
 The force in normal direction is essential to avoid that two rigid bodies overlap.  
 We can construct it with the use of Lagrangian multipliers
 
-$$
-f_N = λ \\frac{∂ c}{∂ x}.
-$$
+$$ f_N = \lambda \frac{\partial c}{\partial x}. $$
 
-The term $\\frac{∂ g}{∂ x}$
+The term $\frac{\partial g}{\partial x}$
