@@ -86,13 +86,10 @@ $$ \lambda_i \geq 0 $$ <br/>
 $$ \lambda_i \cdot c_i(x) = 0 $$ <br/>
 $$ c_i(x) \geq 0 $$
 
-For a fixed state $$x$$ at time $$t$$, we can determine the set of active multipliers $$J_{active}$$ by the condition $$c_j(x) = 0$$ for $j \in J_{active}$$
-and solve the corresponding nonlinear system. However, we have to take the force balance into account to obtain a closed set of equations. 
-
-The numerical implementation will be subject for another post!
+For a fixed state $$x$$ at time $$t$$, we can determine the set of active multipliers $$J_{active}$$ by the condition $$c_j(x) = 0$$ for $$j \in J_{active}$$
+and solve the corresponding nonlinear system. However, it is important to take the force balance into account to obtain a closed set of equations. The numerical implementation requires some extra thoughts and will be subject for another post!
 
 Here is a small teaser:
-
 
 <img class="col two" src="{{ site.baseurl }}/assets/3_spheres.gif"/>
 
@@ -119,4 +116,4 @@ I'm lazy... for more details, I just refer to
 
 [^1]: The naming is inherited from the [neccesary KKT conditions](https://en.wikipedia.org/wiki/Karush%E2%80%93Kuhn%E2%80%93Tucker_conditions#Necessary_conditions).
 [^2]: This might not be true in a strict sense, most contact forces are a consequence of the electicmagnetic forces between atoms. Hence, the force increases locally because atoms are pushed closer together than they prefer. However, under the assumption of rigidity the forces are non-local.
-[^3]: All equations with indices $$i$$ should be read as "for all $$i$$ ...". 
+[^3]: All equations with indices $$i$$ should be read as "for all $$i$$ ...".
