@@ -12,10 +12,12 @@ $$
 but I had no clue how to deal with inequallity constraints
 
 $$  
-m \ddot x = f(x) - \lambda \frac{\partial c}{\partial x} \quad \text{with} \quad c(x) \leq 0.
+\quad c(x) \leq 0
 $$
 
+in this context. Let's dive into it.
 
 ## The physics of contact forces
 
-To start somewhere, let's talk about physics.
+Contact forces appear naturally between 
+
