@@ -23,4 +23,8 @@ Contact forces appear naturally between rigid bodies.
 
 There are two components:
 - the contact force in **normal** direction $$f_N$$,
-- contact force in **tangential** direction, also called kinetic contact force $$f_k$$.
+- contact force in **tangential** direction, also called kinetic contact force $$f_T$$.
+
+The force in normal direction is essential, since 
+
+
