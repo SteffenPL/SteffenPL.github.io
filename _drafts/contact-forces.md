@@ -36,6 +36,7 @@ c(x) \geq 0.
 $$
 We can think of $$c(x)$$ as the distance to a forbidden region.
 The normal force is then given by
+
 $$
 f_N = \lambda \frac{\partial c}{\partial x}.
 $$
@@ -49,8 +50,8 @@ In summary, we get
 
 $$ \lambda \geq 0 \quad \text{and} \quad \lambda \cdot c(x) = 0$$.
 
-The first condition is called the dual feasibility, since it makes sure that the multiplier push into the feasible region.  
-The second condition is a complementary slackness conditions, which ensures that the normal forces are only non-zero at the moment of contact. [^1]
+- The first condition is called the dual feasibility, since it makes sure that the multiplier push into the feasible region.  
+- The second condition is a complementary slackness conditions, which ensures that the normal forces are only non-zero at the moment of contact. [^1]
 
 #### Tangential forces (brief)[
 
