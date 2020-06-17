@@ -46,7 +46,9 @@ If there is an overlap in configuration $$x$$, then $$\frac{\partial g}{\partial
 The Lagrangian multiplier must be positive $$\lambda > 0$$.
 
 In summary, we get
+
 $$ \lambda \geq 0 \quad \text{and} \quad \lambda \cdot c(x) = 0$$.
+
 The first condition is called the dual feasibility, since it makes sure that the multiplier push into the feasible region.  
 The second condition is a complementary slackness conditions, which ensures that the normal forces are only non-zero at the moment of contact. [^1]
 
