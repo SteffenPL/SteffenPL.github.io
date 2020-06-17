@@ -9,10 +9,10 @@ $$
 m \ddot x = f(x) - \lambda \frac{\partial g}{\partial x} \quad \text{with} \quad g(x) = 0,  
 $$
 
-however, I had no clue how to deal with inequallity constraints like
+however, I had no clue how to deal with inequallity constraints like[^3]
 
 $$  
-\quad c(x) \geq 0
+\quad c_i(x) \geq 0
 $$
 
 in this context. Let's dive into it.
@@ -29,12 +29,12 @@ There are two components:
 #### Normal forces via Lagrangian multipliers
 
 The force in normal direction is essential to avoid that two rigid bodies overlap.
-We choose $$c(x)$$ such that the non-overlapping condition
+We choose $$c_i(x)$$ such that the non-overlapping condition
 reads
 $$
-c(x) \geq 0.
+c_i(x) \geq 0.
 $$
-We can think of $$c(x)$$ as the distance to a forbidden region.
+We can think of $$c_i(x)$$ as the distance to a forbidden region.
 
 At a first tought, we might expect the normal force to only depend on the configuration $$x$$ and the velocity $$\dot x$$.
 However, if we stack boxes onto each other, the contact forces on the bottom one increases with each new box. This shows that the contact force between two rigid objects is not a local property but depends on all contacts! [^2]
@@ -48,17 +48,17 @@ As in fluid mechanics, pressure is a Lagrangian multiplier.
 Using multipliers, the normal force takes the form
 
 $$
-f_N = \lambda \frac{\partial c}{\partial x}.
+f_{N,i} = \lambda_i \frac{\partial c_i}{\partial x}.
 $$
 
-But we do not know the value of the multipliers $$\lambda$$ yet! 
+But we do not know the value of the multipliers $$\lambda_i$$ yet! 
 Our next goal is to find equiations for $$\lambda$$!
-- If there is no overlap, we don't want any contact forces which means $$\lambda = 0$$. Easy.
-- If there is an overlap in configuration $$x$$, then $$\frac{\partial g}{\partial x}$$ points out of this overlap. The Lagrangian multiplier must be positive $$\lambda > 0$$.
+- If there is no overlap, we don't want any contact forces which means $$\lambda_i = 0$$. The multiplier is inactive.
+- If there is an overlap in configuration $$x$$, then $$\frac{\partial g}{\partial x}$$ points out of this overlap. The Lagrangian multiplier must be positive $$\lambda_i > 0$$.
 
 In summary, we have
 
-$$ \lambda \geq 0 \quad \text{and} \quad \lambda \cdot c(x) = 0$$.
+$$ \lambda_i \geq 0 \quad \text{and} \quad \lambda_i \cdot c_i(x) = 0$$.
 
 - The first condition is called the dual feasibility, since it makes sure that the multiplier push into the feasible region.  
 - The second condition is a complementary slackness conditions, which ensures that the normal forces are only non-zero at the moment of contact. [^1]
@@ -69,11 +69,11 @@ $$ \lambda \geq 0 \quad \text{and} \quad \lambda \cdot c(x) = 0$$.
 In a nutshell, the equations of motion are
 
 $$
-m \ddot x = f(x) + \lambda \frac{\partial c}{\partial x} 
+m \ddot x = f(x) + \sum_i \lambda_i \frac{\partial c_i}{\partial x} 
 $$ <br/>
-$$ \lambda \geq 0 $$ <br/>
-$$ \lambda c(x) = 0 $$ <br/>
-$$ c(x) \geq 0 $$
+$$ \lambda_i \geq 0 $$ <br/>
+$$ \lambda_i \cdot c_i(x) = 0 $$ <br/>
+$$ c_i(x) \geq 0 $$
 
 The numerical implementation will be subject for another post!
 
@@ -101,3 +101,4 @@ I'm lazy... for more details, I just refer to
 
 [^1]: The naming is inherited from the [neccesary KKT conditions](https://en.wikipedia.org/wiki/Karush%E2%80%93Kuhn%E2%80%93Tucker_conditions#Necessary_conditions).
 [^2]: This might not be true in a strict sense, most contact forces are a consequence of the electicmagnetic forces between atoms. Hence, the force increases locally because atoms are pushed closer together than they prefer. However, under the assumption of rigidity the forces are non-local.
+[^3]: All equations with indices $$i$$ should be read as "for all $$i$$ ...". 
