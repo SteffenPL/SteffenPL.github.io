@@ -75,6 +75,7 @@ m \ddot x = f(x) + \lambda \frac{\partial c}{\partial x} \\
 c(x) \geq 0
 $$
 
+The numerical implementation will be subject for another post!
 
 
 #### Coulomb friction model for kinetic forces (= tangential forces) 
