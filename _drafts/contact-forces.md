@@ -53,6 +53,11 @@ The Lagrangian multiplier must be positive $$\\lambda > 0$$.
 
 $$ \\lambda \\geq 0 \\quad \\text{and} \\quad \\lambda \\cdot c(x) = 0$$.
 
-The trick is
+The first condition is called the dual feasibility, since it makes sure that the multiplier push into the feasible region.  
+The second condition is a complementary slackness conditions, which ensures that the normal forces are only non-zero at the moment of contact. [^1]
 
 #### Tangential forces (brief)
+
+***
+
+[^1] KKT conditions
