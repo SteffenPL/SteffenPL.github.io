@@ -70,9 +70,9 @@ In a nutshell, the equations of motion are
 
 $$
 m \ddot x = f(x) + \lambda \frac{\partial c}{\partial x} 
-$$ </br>
-$$ \lambda \geq 0 $$ </br>
-$$ \lambda c(x) = 0 $$ </br>
+$$ <br/>
+$$ \lambda \geq 0 $$ <br/>
+$$ \lambda c(x) = 0 $$ <br/>
 $$ c(x) \geq 0 $$
 
 The numerical implementation will be subject for another post!
