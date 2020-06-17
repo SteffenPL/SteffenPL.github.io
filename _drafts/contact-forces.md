@@ -12,7 +12,7 @@ $$
 but I had no clue how to deal with inequallity constraints
 
 $$  
-\dot x = f(x) - \lambda \frac{\partial g}{\partial x} \quad \text{with} \quad c(x) \leq 0.
+\dot x = f(x) - \lambda \frac{\partial c}{\partial x} \quad \text{with} \quad c(x) \leq 0.
 $$
 
 
