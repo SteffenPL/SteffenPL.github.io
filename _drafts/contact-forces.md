@@ -66,7 +66,7 @@ $$ \lambda \geq 0 \quad \text{and} \quad \lambda \cdot c(x) = 0$$.
 
 
 
-#### Tangential forces (brief)
+#### Coulomb friction model for kinetic forces (= tangential forces) 
 
 Our model so far has not tangential forces. Hence, objects slide along each other.
 Since I am not interested in tangential forces for my particular application, I just read the basics.
