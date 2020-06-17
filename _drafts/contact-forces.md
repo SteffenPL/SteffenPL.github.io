@@ -9,7 +9,7 @@ $$
 m \ddot x = f(x) - \lambda \frac{\partial g}{\partial x} \quad \text{with} \quad g(x) = 0,  
 $$
 
-but I had no clue how to deal with inequallity constraints
+however, I had no clue how to deal with inequallity constraints like
 
 $$  
 \quad c(x) \leq 0
