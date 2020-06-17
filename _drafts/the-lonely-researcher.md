@@ -1,6 +1,5 @@
 ---
 layout: post
-title: ''
+title: The lonely researcher
 
 ---
-A schoolkid asked me once what it takes to study mathematics. The German word "Frustrationsintoleranz" 
