@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Contact forces
+title: How to compute contact forces?
 
 ---
 A few days ago, I noticed that I know numerics for differential equations with equallity constraints, like
