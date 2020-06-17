@@ -31,18 +31,16 @@ There are two components:
 The force in normal direction is essential to avoid that two rigid bodies overlap.
 We choose $$c(x)$$ such that the non-overlapping condition
 reads
-
 $$
 c(x) \geq 0.
 $$
 We can think of $$c(x)$$ as the distance to a forbidden region.
 The normal force is then given by
-
 $$
 f_N = \lambda \frac{\partial c}{\partial x}.
 $$
 
-But we do not know it's strength! Our next goal is to find equiations for the multiplier $$\\lambda$$!
+But we do not know it's strength! Our next goal is to find equiations for the multiplier $$\lambda$$!
 If there is no overlap, we don't want any contact forces which means $$\lambda = 0$$. Easy.
 If there is an overlap in configuration $$x$$, then $$\frac{\partial g}{\partial x}$$ points out of this overlap.
 The Lagrangian multiplier must be positive $$\lambda > 0$$.
