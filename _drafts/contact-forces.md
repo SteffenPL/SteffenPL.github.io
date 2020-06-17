@@ -39,24 +39,24 @@ We can think of $$c(x)$$ as the distance to a forbidden region.
 At a first tought, we might expect the normal force to only depend on the configuration $$x$$ and the velocity $$\dot x$$.
 However, if we stack boxes onto each other, the contact forces on the bottom one increases with each new box. This shows that the contact force between two rigid objects is not a local property but depends on all contacts! [^2]
 
-
-
 <img class="col three" src="{{ site.baseurl }}/assets/boxes.png"/>
 
+The forces are as big as needed to ensure that all constraints are satisfied.
+If there is more pressure from other boxes, also the normal contact forces will increase.
+As in fluid mechanics, pressure is a Lagrangian multiplier.
 
-
-The normal force is then given by
+Using multipliers, the normal force takes the form
 
 $$
 f_N = \lambda \frac{\partial c}{\partial x}.
 $$
 
-But we do not know it's strength! Our next goal is to find equiations for the multiplier $$\lambda$$!
-If there is no overlap, we don't want any contact forces which means $$\lambda = 0$$. Easy.
-If there is an overlap in configuration $$x$$, then $$\frac{\partial g}{\partial x}$$ points out of this overlap.
-The Lagrangian multiplier must be positive $$\lambda > 0$$.
+But we do not know the value of the multipliers $$\lambda$$ yet! 
+Our next goal is to find equiations for $$\lambda$$!
+- If there is no overlap, we don't want any contact forces which means $$\lambda = 0$$. Easy.
+- If there is an overlap in configuration $$x$$, then $$\frac{\partial g}{\partial x}$$ points out of this overlap. The Lagrangian multiplier must be positive $$\lambda > 0$$.
 
-In summary, we get
+In summary, we have
 
 $$ \lambda \geq 0 \quad \text{and} \quad \lambda \cdot c(x) = 0$$.
 
