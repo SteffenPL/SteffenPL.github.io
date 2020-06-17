@@ -68,10 +68,12 @@ $$ \lambda \geq 0 \quad \text{and} \quad \lambda \cdot c(x) = 0$$.
 
 In a nutshell, the equations of motion are
 
-
-### Numerical simulation of contact forces (unfinished)
-
-
+$$
+m \ddot x = f(x) + \lambda \frac{\partial c}{\partial x} \\
+\lambda \geq 0 \\
+\lambda c(x) = 0 \\
+c(x) \geq 0
+$$
 
 
 
