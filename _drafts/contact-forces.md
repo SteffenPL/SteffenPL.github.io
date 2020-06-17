@@ -63,11 +63,22 @@ $$ \lambda_i \geq 0 \quad \text{and} \quad \lambda_i \cdot c_i(x) = 0$$.
 - The first condition is called the dual feasibility, since it makes sure that the multiplier push into the feasible region.  
 - The second condition is a complementary slackness conditions, which ensures that the normal forces are only non-zero at the moment of contact. [^1]
 
+#### Static case.
+
+In the static case, we can make explicit computations. If $$f(x)$$ denotes the forces acting on our system, we have to solve
+ 
+$$
+0 = f(x) + \sum_i \lambda_i \frac{\partial c_i}{\partial x} 
+$$ <br/>
+$$ \lambda_i \geq 0 $$ <br/>
+$$ \lambda_i \cdot c_i(x) = 0 $$ <br/>
+$$ c_i(x) \geq 0 $$
+
+It is a good excercise to solve these equations for the example of stacked boxes from above.
 
 #### Equations of motion with frictionless contact forces
 
 In a nutshell, the equations of motion are
-
 $$
 m \ddot x = f(x) + \sum_i \lambda_i \frac{\partial c_i}{\partial x} 
 $$ <br/>
@@ -75,8 +86,15 @@ $$ \lambda_i \geq 0 $$ <br/>
 $$ \lambda_i \cdot c_i(x) = 0 $$ <br/>
 $$ c_i(x) \geq 0 $$
 
+For a fixed state $$x$$ at time $$t$$, we can determine the set of active multipliers $$J_{active}$$ by the condition $$c_j(x) = 0$$ for $j \in J_{active}$$
+and solve the corresponding nonlinear system. However, we have to take the force balance into account to obtain a closed set of equations. 
+
 The numerical implementation will be subject for another post!
 
+Here is a small teaser:
+
+
+<img class="col two" src="{{ site.baseurl }}/assets/3_spheres.gif"/>
 
 #### Coulomb friction model for kinetic forces (= tangential forces) 
 
