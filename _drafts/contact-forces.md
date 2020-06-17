@@ -60,4 +60,4 @@ The second condition is a complementary slackness conditions, which ensures that
 
 ***
 
-[^1] KKT conditions
+[^1]: KKT conditions
