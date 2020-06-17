@@ -64,6 +64,15 @@ $$ \lambda \geq 0 \quad \text{and} \quad \lambda \cdot c(x) = 0$$.
 - The second condition is a complementary slackness conditions, which ensures that the normal forces are only non-zero at the moment of contact. [^1]
 
 
+#### Equations of motion with frictionless contact forces
+
+In a nutshell, the equations of motion are
+
+
+### Numerical simulation of contact forces (unfinished)
+
+
+
 
 
 #### Coulomb friction model for kinetic forces (= tangential forces) 
