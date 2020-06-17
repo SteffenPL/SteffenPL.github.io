@@ -24,7 +24,7 @@ Contact forces appear naturally between rigid bodies.
 There are two components:
 
 * the contact force in **normal** direction $$f_N$$,
-* contact force in **tangential** direction, also called kinetic contact force $$f_T$$.
+* the kinetic contact force in **tangential** direction $$f_K$$. This force is active if objects slide alongside each other.
 
 #### Normal forces via Lagrangian multipliers
 
@@ -66,7 +66,24 @@ $$ \lambda \geq 0 \quad \text{and} \quad \lambda \cdot c(x) = 0$$.
 
 
 
-#### Tangential forces (brief)[
+#### Tangential forces (brief)
+
+Our model so far has not tangential forces. Hence, objects slide along each other.
+Since I am not interested in tangential forces for my particular application, I just read the basics.
+
+Modelling friction in detail is a very difficult tasks. In most cases, only simplified friction models are used, such a the Coulomb friction model.
+It asserts a **bounded** ration between tangetial and normal forces
+ 
+$$
+\Vert f_K \Vert \leq \mu_k \Vert f_N \Vert.
+$$
+
+The direction of the tangential friction is opposite to the slipping direction.
+One possible choice is to assume equallity in the above friction law.
+
+I'm lazy... for more details, I just refer to 
+[https://en.wikipedia.org/wiki/Friction#Dry_friction](Wikipedia --> Dry friction).
+
 
 ***
 
