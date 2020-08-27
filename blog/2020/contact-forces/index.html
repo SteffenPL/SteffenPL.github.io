@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Steffen Plunder | How to compute contact forces?</title>
+  <meta name="description" content=" ">
+
+  
+
+  <link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="canonical" href="/blog/2020/contact-forces/">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    
+    <span class="site-title">
+        
+        <strong>Steffen</strong> Plunder
+    </span>
+    
+
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+              <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+              <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+      <div class="trigger">
+        <!-- About -->
+        <a class="page-link" href="/">about</a>
+
+        <!-- Blog -->
+        <a class="page-link" href="/blog/">blog</a>
+
+        <!-- Pages -->
+        
+          
+        
+          
+        
+          
+        
+          
+            <a class="page-link" href="/projects/">projects</a>
+          
+        
+          
+            <a class="page-link" href="/publications/">publications</a>
+          
+        
+          
+            <a class="page-link" href="/teaching/">teaching</a>
+          
+        
+          
+        
+
+        <!-- CV link -->
+        <!-- <a class="page-link" href="/assets/pdf/CV.pdf">vitae</a> -->
+
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">How to compute contact forces?</h1>
+    <p class="post-meta">June 17, 2020
+      
+      </p>
+  </header>
+
+  <article class="post-content">
+    <p>A few days ago, I noticed that I know numerics for differential equations with equallity constraints, like</p>
+
+\[m \ddot x = f(x) - \lambda \frac{\partial g}{\partial x} \quad \text{with} \quad g(x) = 0,\]
+
+<p>however, I had no clue how to deal with inequallity constraints like<sup id="fnref:3" role="doc-noteref"><a href="#fn:3" class="footnote">1</a></sup></p>
+
+\[\quad c_i(x) \geq 0\]
+
+<p>in this context. Let’s dive into it.</p>
+
+<h3 id="the-physics-of-contact-forces">The physics of contact forces</h3>
+
+<p>Contact forces appear naturally between rigid bodies.</p>
+
+<p>There are two components:</p>
+
+<ul>
+  <li>the contact force in <strong>normal</strong> direction \(f_N\),</li>
+  <li>the kinetic contact force in <strong>tangential</strong> direction \(f_K\). This force is active if objects slide alongside each other.</li>
+</ul>
+
+<h4 id="normal-forces-via-lagrangian-multipliers">Normal forces via Lagrangian multipliers</h4>
+
+<p>The force in normal direction is essential to avoid that two rigid bodies overlap.
+We choose \(c_i(x)\) such that the non-overlapping condition
+reads
+\(c_i(x) \geq 0.\)
+We can think of \(c_i(x)\) as the distance to a forbidden region.</p>
+
+<p>At a first tought, we might expect the normal force to only depend on the configuration \(x\) and the velocity \(\dot x\).
+However, if we stack boxes onto each other, the contact forces on the bottom one increases with each new box. This shows that the contact force between two rigid objects is not a local property but depends on all contacts! <sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote">2</a></sup></p>
+
+<p><img class="col three" src="/assets/boxes.png" /></p>
+
+<p>The forces are as big as needed to ensure that all constraints are satisfied.
+If there is more pressure from other boxes, also the normal contact forces will increase.
+As in fluid mechanics, pressure is a Lagrangian multiplier.</p>
+
+<p>Using multipliers, the normal force takes the form</p>
+
+\[f_{N,i} = \lambda_i \frac{\partial c_i}{\partial x}.\]
+
+<p>But we do not know the value of the multipliers \(\lambda_i\) yet! 
+Our next goal is to find equiations for \(\lambda\)!</p>
+<ul>
+  <li>If there is no overlap, we don’t want any contact forces which means \(\lambda_i = 0\). The multiplier is inactive.</li>
+  <li>If there is an overlap in configuration \(x\), then \(\frac{\partial g}{\partial x}\) points out of this overlap. The Lagrangian multiplier must be positive \(\lambda_i &gt; 0\).</li>
+</ul>
+
+<p>In summary, we have</p>
+
+<p>\(\lambda_i \geq 0 \quad \text{and} \quad \lambda_i \cdot c_i(x) = 0\).</p>
+
+<ul>
+  <li>The first condition is called the dual feasibility, since it makes sure that the multiplier push into the feasible region.</li>
+  <li>The second condition is a complementary slackness conditions, which ensures that the normal forces are only non-zero at the moment of contact. <sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote">3</a></sup></li>
+</ul>
+
+<h4 id="static-case">Static case.</h4>
+
+<p>In the static case, we can make explicit computations. If \(f(x)\) denotes the forces acting on our system, we have to solve</p>
+
+<p>\(0 = f(x) + \sum_i \lambda_i \frac{\partial c_i}{\partial x}\) <br />
+\(\lambda_i \geq 0\) <br />
+\(\lambda_i \cdot c_i(x) = 0\) <br />
+\(c_i(x) \geq 0\)</p>
+
+<p>It is a good excercise to solve these equations for the example of stacked boxes from above.</p>
+
+<h4 id="equations-of-motion-with-frictionless-contact-forces">Equations of motion with frictionless contact forces</h4>
+
+<p>In a nutshell, the equations of motion are
+\(m \ddot x = f(x) + \sum_i \lambda_i \frac{\partial c_i}{\partial x}\) <br />
+\(\lambda_i \geq 0\) <br />
+\(\lambda_i \cdot c_i(x) = 0\) <br />
+\(c_i(x) \geq 0\)</p>
+
+<p>For a fixed state \(x\) at time \(t\), we can determine the set of active multipliers \(J_{active}\) by the condition \(c_j(x) = 0\) for \(j \in J_{active}\)
+and solve the corresponding nonlinear system. However, it is important to take the force balance into account to obtain a closed set of equations. The numerical implementation requires some extra thoughts and will be subject for another post!</p>
+
+<p>Here is a small teaser:</p>
+
+<p><img class="col two" src="/assets/3_spheres.gif" /></p>
+
+<h4 id="coulomb-friction-model-for-kinetic-forces--tangential-forces">Coulomb friction model for kinetic forces (= tangential forces)</h4>
+
+<p>Our model so far has not tangential forces. Hence, objects slide along each other.
+Since I am not interested in tangential forces for my particular application, I just read the basics.</p>
+
+<p>Modelling friction in detail is a very difficult tasks. In most cases, only simplified friction models are used, such a the Coulomb friction model.
+It asserts a <strong>bounded</strong> ration between tangetial and normal forces</p>
+
+\[\Vert f_K \Vert \leq \mu_k \Vert f_N \Vert.\]
+
+<p>The direction of the tangential friction is opposite to the slipping direction.
+One possible choice is to assume equallity in the above friction law.</p>
+
+<p>I’m lazy… for more details, I just refer to 
+<a href="Wikipedia --&gt; Dry friction">https://en.wikipedia.org/wiki/Friction#Dry_friction</a>.</p>
+
+<hr />
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:3" role="doc-endnote">
+      <p>All equations with indices \(i\) should be read as “for all \(i\) …”. <a href="#fnref:3" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+      <p>This might not be true in a strict sense, most contact forces are a consequence of the electicmagnetic forces between atoms. Hence, the force increases locally because atoms are pushed closer together than they prefer. However, under the assumption of rigidity the forces are non-local. <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:1" role="doc-endnote">
+      <p>The naming is inherited from the <a href="https://en.wikipedia.org/wiki/Karush%E2%80%93Kuhn%E2%80%93Tucker_conditions#Necessary_conditions">neccesary KKT conditions</a>. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+  </article>
+
+  
+
+</div>
+
+      </div>
+    </div>
+
+    <footer>
+
+  <div class="wrapper">
+    &copy; Copyright 2020 Steffen Plunder.
+    Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
+
+    
+  </div>
+
+</footer>
+
+
+    <!-- Load jQuery -->
+<script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<!-- Load Common JS -->
+<script src="/assets/js/common.js"></script>
+
+
+<!-- Load KaTeX -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js"></script>
+<script src="/assets/js/katex.js"></script>
+
+
+
+
+<!-- Include custom icon fonts -->
+<link rel="stylesheet" href="/assets/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="/assets/css/academicons.min.css">
+
+
+
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Quattrocento+Sans&display=swap" rel="stylesheet">
+
+
+  </body>
+
+</html>

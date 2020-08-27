@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Steffen Plunder | Korovkin's theorems</title>
+  <meta name="description" content=" ">
+
+  
+
+  <link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="canonical" href="/blog/2020/korovkin/">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    
+    <span class="site-title">
+        
+        <strong>Steffen</strong> Plunder
+    </span>
+    
+
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+              <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+              <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+      <div class="trigger">
+        <!-- About -->
+        <a class="page-link" href="/">about</a>
+
+        <!-- Blog -->
+        <a class="page-link" href="/blog/">blog</a>
+
+        <!-- Pages -->
+        
+          
+        
+          
+        
+          
+        
+          
+            <a class="page-link" href="/projects/">projects</a>
+          
+        
+          
+            <a class="page-link" href="/publications/">publications</a>
+          
+        
+          
+            <a class="page-link" href="/teaching/">teaching</a>
+          
+        
+          
+        
+
+        <!-- CV link -->
+        <!-- <a class="page-link" href="/assets/pdf/CV.pdf">vitae</a> -->
+
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Korovkin's theorems</h1>
+    <p class="post-meta">April 24, 2020
+      
+      </p>
+  </header>
+
+  <article class="post-content">
+    <p>Since this is my first blog entry, a few words in advance. I want to collect notable theorems and small bits of mathematics which I come across during my PhD. The entries are not complete and they will contain errors. It’s more like my personal notepad.</p>
+
+<hr />
+
+<p>Pavel Korovkin’s theorems are a bit surprising, since they allow to show point-wise convergence of a sequence of linear operators under very mild conditions. Most notably, the point-wise convergence of the operators at three points is enough!</p>
+
+<p>This post is based on Section IV.2 from <a class="citation" href="#wernerFunktionalanalysis2018">(Werner, 2018)</a>.</p>
+
+<h3 id="korovkins-first-theorem">Korovkin’s first theorem</h3>
+
+<p>In the following, \(C[0,1]\) denotes the Banach space of continuous functions on the interval \([0,1]\) equipped with the uniform norm \(\Vert f \Vert_{\max} = \max_{x \in [0,1]} \vert f(x)\vert\).</p>
+
+<p><strong>Theorem 1</strong> (Korovkin’s first theorem):</p>
+
+<p><em>Let \((T_n)_{n}\) be a sequence of bounded linear operators \(T_n : C[0,1] \to C[0,1]\).
+We also assume the operators to be positive, hence, for every continuous function \(f \in C[0,1]\) with \(f \geq 0\) we have \(T_n f \geq 0\).</em></p>
+
+<p><em>If for the three first monomials \(p_0(x) = 1, p_1(x) = x\) and \(p_2(x) = x^2\)
+the operators are point-wise convergent</em></p>
+
+\[T_n p_0 \to p_0, \quad
+T_n p_1 \to p_1, \quad \text{and} \quad
+T_n p_2 \to p_2, \quad \text{for } n \to \infty,\]
+
+<p><em>then</em></p>
+
+\[T_n x \to x, \quad \text{for all } x \in C[0,1].\]
+
+<p><br /></p>
+
+<p><em>Sketch of the proof:</em></p>
+
+<p>A difficulty here is to get a good global estimate for the variation of a continuous function \(f \in C[0,1]\) between arbitray points \(x, y \in [0,1]\), i.e. something like</p>
+
+\[\vert f(x) - f(y) \vert \leq b(ε, \vert x - y \vert).\]
+
+<p>Continuity on an compact intervals gives us an uniform estimate</p>
+
+\[| x - y | ≤ \sqrt{δ}
+\quad ⇒ \quad | f(x) - f(y) | ≤  ε.\]
+
+<p>The trick is to extend this estimate to the region \(\vert x - y \vert ≥ \sqrt{δ}\). We use the very conservative estimate</p>
+
+\[\vert f(x) - f(y) \vert ≤ 2 \Vert f \Vert_{\max},\]
+
+<p>and combine these two estimates by defining</p>
+
+\[b(ε, \vert x - y \vert) = ε + 2 \Vert f \Vert_{\max} \frac{\vert x - y \vert^2}{\delta}.\]
+
+<p><img class="col three" src="/assets/img/korovkin_bound.png" /></p>
+
+<p>Outside of the region \(\vert x - y \vert ≤ \sqrt{δ}\) the fraction is \(≥ 1\)
+which brings the conservative estimate into play. We notice that we initially had to pick \(\sqrt{δ}\) to ensure that
+the conservative estimate enters the final estimate quadratically, hence, it decays fast if \(x\) is close to \(y\).</p>
+
+<p>The rest of the proof requires a few more manipulation of inequalities which I don’t want to carry out in detail here.</p>
+
+<p>If we fix \(y\) for a moment, we can apply \(T_n\) to</p>
+
+\[-b(ε, \vert \cdot - y \vert) ≤ f(⋅) - f(y) ≤ b(ε, \vert \cdot - y \vert)\]
+
+<p>which gives due to positivity of the operators</p>
+
+\[-T_n b(ε, \vert \cdot - y \vert) ≤ T_n f(⋅) - f(y) T_n x_0 ≤ T_n b(ε, \vert \cdot - y \vert).\]
+
+<p>Now, we use that \(b(ε, \vert x - y \vert)\) is a polynomial of degree 2, which brings the assumption into play. This yields that the bounds converge to \(b(ε, \vert x - y \vert)\) and
+the term in the middle becomes \((T_n f)(x) - f(y)\), now the limit \(x → y\) yields the claim.</p>
+
+<hr />
+
+<h4 id="application-of-korovkins-first-theorem">Application of Korovkin’s first theorem</h4>
+
+<p>A consequence of the proof is the Weierstraß-approximation theorem
+which states that the set of polynomials is dense in the Banach space of continuous functions \(C[0,1]\).</p>
+
+<p>With the notation of the theorem, the operators \(T_n\) maps a function to its \(n\)th Bernstein polynomial.
+These operators satisfy the conditions of Korovkin’s first theorem!</p>
+
+<h3 id="korovkins-second-theorem">Korovkin’s second theorem</h3>
+
+<p>Let \(C_{2 \pi}\) denote the space of periodic continious functions on \([ -π, π]\) with uniform norm.</p>
+
+<p><strong>Theorem 1</strong> (Korovkin’s second theorem):</p>
+
+<p><em>Let \((T_n)_{n}\) be a sequence of positive, bounded, linear operators \(T_n : C_{2π} → C_{2π}\).</em></p>
+
+<p><em>If for \(p_0(x) = 1, p_1(x) = \cos(x)\) and \(p_2(x) = \sin(x)\)
+the operators are point-wise convergent</em></p>
+
+\[T_n p_0 \to p_0, \quad
+T_n p_1 \to p_1, \quad \text{and} \quad
+T_n p_2 \to p_2, \quad \text{for } n \to \infty,\]
+
+<p><em>then</em></p>
+
+\[T_n x \to x, \quad \text{for all } x \in C_{2π}.\]
+
+<p><br /></p>
+
+<h4 id="application-of-korovkins-second-theorem">Application of Korovkin’s second theorem</h4>
+
+<p>There exists a continious, \(2 π\) periodic function \(f\) for which the Fourier series</p>
+
+\[s_n(x) = \sum_{k=-n}^n \hat{f}(k) e^{i k x}\]
+
+<p>does not converge at every point <a class="citation" href="#wernerFunktionalanalysis2018">(Werner, 2018)</a>.</p>
+
+<p>However, if we use the mean of the values \(s_n\), namely,</p>
+
+\[T_n f := \frac{1}{n} \sum_{l=1}^n s_l\]
+
+<p>we obtain a point-wise convergent approximation of \(C_{2π}\) by Krovkin’s theorem.
+This statement is called <a href="https://en.wikipedia.org/wiki/Fej%C3%A9r%27s_theorem">Fejér’s theorem</a>.</p>
+
+<p>It implies the second Weierstraß approximation theorem: The trigeometric polynomials are dense in \(C_{2π}\).</p>
+
+<h2 id="references">References</h2>
+
+<ol class="bibliography"><li>
+
+<div id="wernerFunktionalanalysis2018">
+  
+    <span class="title">Funktionalanalysis</span>
+    <span class="author">
+      
+        
+          
+            Werner, Dirk
+          
+        
+      
+    </span>
+
+    <span class="periodical">
+    
+    
+      2018
+    
+    </span>
+  
+
+  <span class="links">
+  
+  
+  
+  
+    [<a href="https://doi.org/10.1007/978-3-662-55407-4" class="_blank">doi: 10.1007/978-3-662-55407-4</a>]
+  
+  
+  
+  
+  
+  
+  
+  </span>
+
+  <!-- Hidden abstract block -->
+  
+</div>
+</li></ol>
+
+  </article>
+
+  
+
+</div>
+
+      </div>
+    </div>
+
+    <footer>
+
+  <div class="wrapper">
+    &copy; Copyright 2020 Steffen Plunder.
+    Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
+
+    
+  </div>
+
+</footer>
+
+
+    <!-- Load jQuery -->
+<script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<!-- Load Common JS -->
+<script src="/assets/js/common.js"></script>
+
+
+<!-- Load KaTeX -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js"></script>
+<script src="/assets/js/katex.js"></script>
+
+
+
+
+<!-- Include custom icon fonts -->
+<link rel="stylesheet" href="/assets/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="/assets/css/academicons.min.css">
+
+
+
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Quattrocento+Sans&display=swap" rel="stylesheet">
+
+
+  </body>
+
+</html>

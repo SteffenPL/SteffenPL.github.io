@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Steffen Plunder | Partially Kinetic Systems</title>
+  <meta name="description" content=" ">
+
+  
+
+  <link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="canonical" href="/projects/partially_kinetic_systems/">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    
+    <span class="site-title">
+        
+        <strong>Steffen</strong> Plunder
+    </span>
+    
+
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+              <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+              <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+      <div class="trigger">
+        <!-- About -->
+        <a class="page-link" href="/">about</a>
+
+        <!-- Blog -->
+        <a class="page-link" href="/blog/">blog</a>
+
+        <!-- Pages -->
+        
+          
+        
+          
+        
+          
+        
+          
+            <a class="page-link" href="/projects/">projects</a>
+          
+        
+          
+            <a class="page-link" href="/publications/">publications</a>
+          
+        
+          
+            <a class="page-link" href="/teaching/">teaching</a>
+          
+        
+          
+        
+
+        <!-- CV link -->
+        <!-- <a class="page-link" href="/assets/pdf/CV.pdf">vitae</a> -->
+
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Partially Kinetic Systems</h1>
+    <h5 class="post-description">Coupling between micro and macro models.</h5>
+  </header>
+
+  <article class="post-content Partially Kinetic Systems clearfix">
+    <p style="color:red;">This post is based on ongoing work. The statements in the linear case are going to be published in <a class="citation" href="#plunder2020linearPartiallyKineticSystems">(Plunder &amp; Simeon, 2020)</a>. The nonlinear case is in progress.</p>
+
+<p>We study a framework to couple kinetic systems with other macroscopic components.
+The challenge here is to impose a kinetic constraint onto the evolution of the particle measure of the
+kinetic system. Out approach is to impose the constraint at the microscopic level instead.
+Therefore, we have to adapt the mean-field limit onto a setting with holonomic constraints.</p>
+
+<p>Under appropriate assumptions, <strong>Dorbushin’s stability estimate</strong> <a class="citation" href="#golseDynamicsLargeParticle2016">(Golse, 2016)</a> generalises well to such constrained systems which yields a fundamental stability estimate and allows proving the mean-field limit.</p>
+
+<p>On the other hand, there are singular examples for which the discrete dynamics are well-defined but the mean-field limit fails dramatically.</p>
+
+<h2 id="the-discrete-particle-system">The discrete particle system</h2>
+
+<p>In abstract terms, we consider the macroscopic system [^1]</p>
+
+\[m_r \ddot r = F_r(r) - \sum_{j=1}^N \left( \frac{\partial g}{\partial r}(r,Q_j) \right)^T\lambda_j,\]
+
+<p>a particle system with microscopic law</p>
+
+\[m_q \ddot Q_i = F_q(Q_i) - \left(\frac{\partial g}{\partial Q_i}(r,Q_i)\right)^T \lambda_i
+\quad \quad \text{for all } i \in \{1,\dots,N\}\]
+
+<p>and a (holonomic[^3]) constraint</p>
+
+\[g(r,Q_i) = g(r(0), Q_i(0))
+\quad \quad \text{for all } i \in \{1,\dots,N\}.\]
+
+<p>It is important that the constraint is uniform in \(i\), which means that every particle is treated in the same way.</p>
+
+<p>A toy example would be a large linear spring, which is uniformly coupled to numerous small springs, like in the image below.
+<img class="col three" src="/assets/img/partially_kinetic_systems_example.svg" /></p>
+
+<h3 id="numerical-examples">Numerical examples</h3>
+
+<p>If we let particles to be one-dimensional and the macroscopic system also be one-dimensional, we can plot both into a 2D plot.</p>
+
+<p>In the following two examples we plot the trajectories</p>
+
+<p>\((Q_1(t),r(t)), (Q_2(t),r(t)), \dots, (Q_N(t),r(t))\)
+as blue dots.
+The contour lines of the function \(g(r,Q_j)\) are shown as green-ish lines.</p>
+
+<p><strong>The particles \(Q_j(t)\) have to stay onto the coloured contour lines of the constraint \(g(r,Q_j)\).</strong></p>
+
+<p>We consider free particles, i.e. \(F_q = 0\), and a harmonic osscilator for the macroscopic system, i.e. \(F_r(r) = -r\).
+For the plots we used $N = 100$ particles.</p>
+
+<h4 id="regular-case">Regular case</h4>
+
+<video style="width:100%; height:auto" controls="">
+  <source src="/assets/videos/onion_example.mp4" type="video/mp4" />
+Your browser does not support the video tag.
+</video>
+
+<p>The constraint in this setting is given by the nonlinear function</p>
+
+\[g(r,Q_j) = \sin(\frac{q}{10})/(1+r^2) + \frac{q}{10}.\]
+
+<p>Near the plateau of the contour lines, the blue dots move very fast in \(r\) direction and are almost constant in \(q\) direction.
+At this point all kinetic energy of the particles is transferred to the macroscopic system.
+Later, the particles obtain kinetic energy again.</p>
+
+<p>This behaviour is best understood with the notation of the mean-field mass, which we will develop below!</p>
+
+<h4 id="singular-case">Singular case</h4>
+
+<video style="width:100%; height:auto" controls="">
+  <source src="/assets/videos/singular_example.mp4" type="video/mp4" />
+Your browser does not support the video tag.
+</video>
+
+<p>In the same setting as above, but with the singular constraint function</p>
+
+\[g(r,Q_j) = (r-0.5)^2 + Q_j^2.\]
+
+<p>If \(r = 0\) the constraint is not invertible with respect to \(Q_j\), which implies
+that \(\frac{\partial g}{\partial Q_j} \to \infty\).
+We obtain a system for which the mean-field limit will fail!</p>
+
+<p>The time at which the particles change their direction is determined by the particle which hits the the singularity of \(\frac{\partial g}{\partial Q_j}\) first.
+Such a behaviour is problematic from a kinetic perspective, since a continious measure cannot detect this case well. This singular example demonstrates how important it is to include regularity conditions in the theory.</p>
+
+<h2 id="mean-field-limit-for-partially-kinetic-systems">Mean-field limit for partially kinetic systems</h2>
+
+<p>We are interested in the mean-field limit for \(N \to \infty\).
+Due to the constraint, classical theorems from kinetic theory are not directly applicable. However, the situation is also easier since we have no <em>direct</em> interaction between particles!
+The mean-field limit replaces the discrete particle positions \((Q_j)_{j=1,\dots,N}\)
+by a particle measure \(f(q,t)\) such that</p>
+
+<p>\(\int_A f(q,t) \, \mathrm{d} q \approx ``\text{number of particles in region $A$ at time $t$}"\).</p>
+
+<p>To derive an equation for the particle measure, we have two options:</p>
+<ul>
+  <li>either we are happy with a purely analytical expression. Then we can afford to carry the Lagrangian multipliers \(\lambda_j\) with us and derive the constrained mean-field characteristic flow;</li>
+  <li>or we eliminate the Lagrangian multipliers and apply the mean-field limit afterwards. This approach yields the mean-field PDE.</li>
+</ul>
+
+<p>In fact, taking the mean-field limit and elimination of the Lagrangian multipliers commutes.</p>
+
+<h4 id="mean-field-forces-and-mean-field-mass">Mean-field forces and <strong>mean-field mass</strong></h4>
+
+<p>When we compute a bit, we can reformulate the system above into</p>
+
+\[\left( m_r + m_\text{mf}(r,Q_1,\dots,Q_N) \right) \ddot r = F(r) + F_\text{mf}(r,Q_1,\dots,Q_N)\]
+
+<p>and</p>
+
+\[\dot Q_j = v_\text{eff}(r,Q_j).\]
+
+<p>where \(F_\text{mf}\) denotes the mean-field force and \(m_\text{mf}\) the mean-field mass; The effective velocity \(v_\text{eff}\) is the unique velocity needed for the particles to satisfy the constraint.</p>
+
+<p>The appearance of a mean-field mass is not typical for kinetic systems and a consequence of the constraint. The mean-field mass is also the only serious troublemaker, since it could go to infinity.</p>
+
+<h4 id="partially-kinetic-mean-field-pde">Partially kinetic mean-field PDE</h4>
+
+<p>If we apply the mean-field limit to the reformulated system, we get the following kinetic equations</p>
+
+\[\left(m_r + m_\text{mf}(r,f)\right) \ddot r = F(r) + F_\text{mf}(r,f)\]
+
+<p>and</p>
+
+\[\frac{\partial f}{\partial t} + v_\text{eff}(r,q)
+\frac{\partial f}{\partial q} = 0.\]
+
+<p>The PDE is a first-order transport equation.</p>
+
+<h2 id="analytical-results">Analytical results</h2>
+
+<p style="color:red;">This section is based on ongoing work. The statements are not published yet.</p>
+
+<p>Following François Golse’s lecture notes ‘On the Dynamics of Large Particle Systems in the Mean Field Limit’
+<a class="citation" href="#golseDynamicsLargeParticle2016">(Golse, 2016)</a>, we can show the mean-field limit.
+For the linear case the result is going to be published in <a class="citation" href="#plunder2020linearPartiallyKineticSystems">(Plunder &amp; Simeon, 2020)</a>,
+for the nonlinear case the publication is in progress.</p>
+
+<p>The aim is to prove a modified version of Dobrushin’s stability estimate.
+We consider two solutions with different initial conditions
+\((r(t),f(t))\) and \((\tilde{r}(t), \tilde{f}(t))\).
+Under some technical conditions, we aim at proving the estimate</p>
+
+\[\Vert r(t) - \tilde{r}(t) \Vert
++
+\Vert \dot r(t) - \tilde{\dot r}(t) \Vert
++
+W^1(f(t), \tilde{f}(t))\]
+
+\[\quad \quad \quad \quad \quad \quad \leq C e^{Lt}
+(\Vert r(0) - \tilde{r}(0) \Vert
++
+\Vert \dot r(0) - \tilde{\dot r}(0) \Vert
++
+W^1(f(0), \tilde{f}(0)) )\]
+
+<p>where \(W^1\) denotes the Wasserstein distance with exponent 1 (see Monge-Kantorovich distance in <a class="citation" href="#golseDynamicsLargeParticle2016">(Golse, 2016)</a>).
+The Wasserstein distance  provides an excellent metric to compare particle measures \(f(t)\) and \(\tilde{f}(t)\).</p>
+
+<h3 id="linear-case">Linear case</h3>
+
+<p>Since the Wasserstein metric is shift invariant,
+we can use a classical stability estimate for ODEs to obtain Dobrushin’s stability estimate for linear partially kinetic systems.</p>
+
+<h4 id="central-estimates-in-the-linear-case">Central estimates in the linear case</h4>
+
+<p>If the mean-field force is linear, we obtain from Kantorovich’s duality formula for the Wassertein distance an estimate of the form</p>
+
+\[\Vert F_\text{mf}(r,f) - F_\text{mf}(r,\tilde f) \Vert \leq L(r) W_1(f,\tilde{f})\]
+
+<p>where \(L(r)\) is an appropriate Lipschitz constant.
+This shows that if \(f_1\) and \(f_2\) are close to each other, also the resulting mean-field forces are close.</p>
+
+<h3 id="nonlinear-case-work-in-progress">Nonlinear case (work in progress!)</h3>
+
+<h4 id="energy-conservation">Energy conservation</h4>
+
+<p>Since not stochastic noise or friction is present, we can compute conservation of energy with the same steps as in the discrete case.
+This is crucial for finding bounds of the effective mass.</p>
+
+<h4 id="troublemaker">Troublemaker</h4>
+
+<p>To get estimates for \(r(t)\), we need to study the ODE</p>
+
+\[\ddot r = \left( m_r + m_\text{mf}(r,f) \right)^{-1} ( F_r(r) + F_{\text{mf}}(r,f) ).\]
+
+<p>This leads to the problem of estimating terms like</p>
+
+<p>\(\Vert \left( m_r + m_\text{mf}(r,f) \right)^{-1} ( F_r(r) + F_{\text{mf}}(r,f) )\)
+\(\quad -
+\left( m_r + m_\text{mf}(\tilde{r},\tilde{f}) \right)^{-1} ( F_r(\tilde{r}) + F_{\text{mf}}(\tilde{r},\tilde{f}) )
+\Vert.\)</p>
+
+<p>So far, I found no completely satisfying solutions.
+Right now, a bootstrapping-like approach allows me to assume an upper bound for the mean-field mass. This allows to derive the nessecary estimates.
+Then, I can arguee afterwards that the regions with problematic mass cannot be reached due to energy conservation.</p>
+
+<p>However, the proof needs proper checks!</p>
+
+<h2 id="references">References</h2>
+
+<ol class="bibliography"><li>
+
+<div id="plunder2020linearPartiallyKineticSystems">
+  
+    <span class="title">Coupled Systems of Linear Differential-Algebraic and Kinetic
+Equations with Application to the Mathematical Modelling of
+Muscle Tissue</span>
+    <span class="author">
+      
+        
+          
+            
+              <em>Plunder, S.</em>,
+            
+          
+        
+      
+        
+          
+            
+              
+                and <a href="https://www.mathematik.uni-kl.de/en/das/people/head/simeon/" target="_blank">Simeon, B.</a>
+              
+            
+          
+        
+      
+    </span>
+
+    <span class="periodical">
+    
+      <em></em>
+    
+    
+      2020
+    
+    </span>
+  
+
+  <span class="links">
+  
+    [<a class="abstract">Abs</a>]
+  
+  
+    [<a href="http://arxiv.org/abs/1911.05468" target="_blank">arXiv</a>]
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </span>
+
+  <!-- Hidden abstract block -->
+  
+  <span class="abstract hidden">
+    <p>We consider a coupled system composed of a linear differential-algebraic equation (DAE) and a linear large-scale system of ordinary differential equations where the latter stands for the dynamics of numerous identical particles.
+Replacing the discrete particles by a kinetic equation for a particle density, we obtain in the mean-field limit the new class of partially kinetic systems.
+<br />
+We investigate the influence of constraints on the kinetic theory of those systems and present necessary adjustments.
+We adapt the mean-field limit to the DAE model and show that index reduction and the mean-field limit commute.
+As a main result, we prove Dobrushin’s stability estimate for linear systems. The estimate implies convergence of the mean-field limit and provides a rigorous link between the particle dynamics and their kinetic description.
+<br />
+Our research is inspired by mathematical models for muscle tissue where the macroscopic behaviour is governed by the equations of continuum mechanics, often discretised by the finite element method, and the microscopic muscle contraction process is described by Huxley’s sliding filament theory. The latter represents a kinetic equation that characterises the state of the actin-myosin bindings in the muscle filaments.
+Linear partially kinetic systems are a simplified version of such models, with focus on the constraints.</p>
+  </span>
+  
+</div>
+</li>
+<li>
+
+<div id="golseDynamicsLargeParticle2016">
+  
+    <span class="title">On the Dynamics of Large Particle Systems in the Mean Field Limit</span>
+    <span class="author">
+      
+        
+          
+            Golse, François
+          
+        
+      
+    </span>
+
+    <span class="periodical">
+    
+    
+      2016
+    
+    </span>
+  
+
+  <span class="links">
+  
+    [<a class="abstract">Abs</a>]
+  
+  
+    [<a href="http://arxiv.org/abs/1301.5494" target="_blank">arXiv</a>]
+  
+  
+  
+    [<a href="https://doi.org/10.1007/978-3-319-26883-5_1" class="_blank">doi: 10.1007/978-3-319-26883-5_1</a>]
+  
+  
+  
+  
+  
+  
+  
+  </span>
+
+  <!-- Hidden abstract block -->
+  
+  <span class="abstract hidden">
+    <p>This course explains how the usual mean field evolution partial differential equations (PDEs) in Statistical Physics—such as the Vlasov-Poisson system, the vorticity formulation of the two-dimensional Euler equation for incompressible fluids, or the time-dependent Hartree equation in quantum mechanics—can be rigorously derived from the fundamental microscopic equations that govern the evolution of large, interacting particle systems. The emphasis is put on the mathematical methods used in these derivations, such as Dobrushin’s stability estimate in the Monge-Kantorovich distance for the empirical measures built on the solution of the N-particle motion equations in classical mechanics, or the theory of BBGKY hierarchies in the case of classical as well as quantum problems. We explain in detail how these different approaches are related; in particular we insist on the notion of chaotic sequences and on the propagation of chaos in the BBGKY hierarchy as the number of particles tends to infinity.</p>
+  </span>
+  
+</div>
+</li></ol>
+
+  </article>
+
+  
+
+  
+
+</div>
+
+      </div>
+    </div>
+
+    <footer>
+
+  <div class="wrapper">
+    &copy; Copyright 2020 Steffen Plunder.
+    Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
+
+    
+  </div>
+
+</footer>
+
+
+    <!-- Load jQuery -->
+<script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<!-- Load Common JS -->
+<script src="/assets/js/common.js"></script>
+
+
+<!-- Load KaTeX -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js"></script>
+<script src="/assets/js/katex.js"></script>
+
+
+
+
+<!-- Include custom icon fonts -->
+<link rel="stylesheet" href="/assets/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="/assets/css/academicons.min.css">
+
+
+
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Quattrocento+Sans&display=swap" rel="stylesheet">
+
+
+  </body>
+
+</html>
